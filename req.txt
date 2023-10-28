@@ -1,59 +1,59 @@
-pip install azure-ai-language-questionanswering==1.1.0
-pip install azure-ai-ml==0.1.0b8
-pip install azure-ai-ml==0.1.0b7
-pip install azure-ai-ml==1.0.0
-pip install azure-appconfiguration-provider==1.0.0b1
-pip install azure-communication-identity==1.3.0
-pip install azure-core==1.26.0
-pip install azure-core-experimental==1.0.0b1
-pip install azure-cosmos==4.3.1b1
-pip install azure-data-tables==12.4.1
-pip install azure-eventhub==5.8.0b1
-pip install azure-eventhub==5.8.0b2
-pip install azure-identity==1.11.0
-pip install azure-identity==1.12.0b1
-pip install azure-identity==1.12.0b2
-pip install azure-keyvault-administration==4.2.0
-pip install azure-keyvault-certificates==4.6.0
-pip install azure-keyvault-keys==4.7.0
-pip install azure-keyvault-keys==4.8.0b1
-pip install azure-keyvault-secrets==4.6.0
-pip install azure-maps-geolocation==1.0.0b1
-pip install azure-maps-render==1.0.0b1
-pip install azure-maps-route==1.0.0b1
-pip install azure-maps-search==1.0.0b2
-pip install azure-mgmt-appcontainers==2.0.0b1
-pip install azure-mgmt-authorization==3.0.0
-pip install azure-mgmt-compute==28.0.0
-pip install azure-mgmt-compute==28.0.1
-pip install azure-mgmt-compute==29.0.0
-pip install azure-mgmt-containerservice==20.4.0
-pip install azure-mgmt-cosmosdb==9.0.0b1
-pip install azure-mgmt-datafactory==2.8.0
-pip install azure-mgmt-dataprotection==1.0.0b2
-pip install azure-mgmt-dnsresolver==1.0.0
-pip install azure-mgmt-dynatrace==1.0.0
-pip install azure-mgmt-kusto==3.0.0
-pip install azure-mgmt-loadtestservice==1.0.0
-pip install azure-mgmt-media==10.1.0
-pip install azure-mgmt-monitor==5.0.0
-pip install azure-mgmt-monitor==5.0.1
-pip install azure-mgmt-netapp==9.0.0
-pip install azure-mgmt-network==22.0.0
-pip install azure-mgmt-nginx==1.1.0
-pip install azure-mgmt-policyinsights==1.1.0b3
-pip install azure-mgmt-reservations==2.1.0
-pip install azure-mgmt-resource==21.2.0
-pip install azure-mgmt-security==2.0.0
-pip install azure-mgmt-securityinsight==2.0.0b1
-pip install azure-mgmt-servicefabricmanagedclusters==2.0.0b2
-pip install azure-mgmt-sql==4.0.0b4
-pip install azure-monitor-opentelemetry-exporter==1.0.0b8
-pip install azure-schemaregistry==1.2.0
-pip install azure-servicebus==7.9.0a1
-pip install azure-servicebus==7.8.1
-pip install azure-storage-blob==12.14.0
-pip install azure-storage-file-datalake==12.9.0
-pip install azure-storage-file-share==12.10.0
-pip install azure-storage-queue==12.5.0
-pip install azure-synapse-artifacts==0.14.0
+azure-ai-language-questionanswering==1.1.0
+azure-ai-ml==0.1.0b8
+azure-ai-ml==0.1.0b7
+azure-ai-ml==1.0.0
+azure-appconfiguration-provider==1.0.0b1
+azure-communication-identity==1.3.0
+azure-core==1.26.0
+azure-core-experimental==1.0.0b1
+azure-cosmos==4.3.1b1
+azure-data-tables==12.4.1
+azure-eventhub==5.8.0b1
+azure-eventhub==5.8.0b2
+azure-identity==1.11.0
+azure-identity==1.12.0b1
+azure-identity==1.12.0b2
+azure-keyvault-administration==4.2.0
+azure-keyvault-certificates==4.6.0
+azure-keyvault-keys==4.7.0
+azure-keyvault-keys==4.8.0b1
+azure-keyvault-secrets==4.6.0
+azure-maps-geolocation==1.0.0b1
+azure-maps-render==1.0.0b1
+azure-maps-route==1.0.0b1
+azure-maps-search==1.0.0b2
+azure-mgmt-appcontainers==2.0.0b1
+azure-mgmt-authorization==3.0.0
+azure-mgmt-compute==28.0.0
+azure-mgmt-compute==28.0.1
+azure-mgmt-compute==29.0.0
+azure-mgmt-containerservice==20.4.0
+azure-mgmt-cosmosdb==9.0.0b1
+azure-mgmt-datafactory==2.8.0
+azure-mgmt-dataprotection==1.0.0b2
+azure-mgmt-dnsresolver==1.0.0
+azure-mgmt-dynatrace==1.0.0
+azure-mgmt-kusto==3.0.0
+azure-mgmt-loadtestservice==1.0.0
+azure-mgmt-media==10.1.0
+azure-mgmt-monitor==5.0.0
+azure-mgmt-monitor==5.0.1
+azure-mgmt-netapp==9.0.0
+azure-mgmt-network==22.0.0
+azure-mgmt-nginx==1.1.0
+azure-mgmt-policyinsights==1.1.0b3
+azure-mgmt-reservations==2.1.0
+azure-mgmt-resource==21.2.0
+azure-mgmt-security==2.0.0
+azure-mgmt-securityinsight==2.0.0b1
+azure-mgmt-servicefabricmanagedclusters==2.0.0b2
+azure-mgmt-sql==4.0.0b4
+azure-monitor-opentelemetry-exporter==1.0.0b8
+azure-schemaregistry==1.2.0
+azure-servicebus==7.9.0a1
+azure-servicebus==7.8.1
+azure-storage-blob==12.14.0
+azure-storage-file-datalake==12.9.0
+azure-storage-file-share==12.10.0
+azure-storage-queue==12.5.0
+azure-synapse-artifacts==0.14.0
